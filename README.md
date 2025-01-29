@@ -14,6 +14,10 @@ Appalyzer is a desktop application developed with **Electron** and **React**, de
 - **Intelligent Session Handling**: Securely manage sessions for encapsulated applications.
 - **Desktop Shortcuts**: Create shortcuts for quick access to applications.
 
+## Installation (exe)
+
+[Windows installer](https://github.com/achillebourgault/appalyzer/releases/download/release/Appalyzer.Setup.1.0.0.exe)
+
 ## Technology Stack
 
 - **Electron**: For cross-platform desktop application development.
