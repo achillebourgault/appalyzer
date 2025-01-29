@@ -46,7 +46,7 @@ Appalyzer is a desktop application developed with **Electron** and **React**, de
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [CC BY-NC 4.0 License](LICENSE).
 
 ## Contact
 
