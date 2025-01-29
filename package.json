@@ -1,0 +1,105 @@
+{
+  "name": "appalyzer",
+  "version": "1.0.0",
+  "description": "Web applications encapsulator",
+  "main": "./public/electron.js",
+  "author": "achillebourgault",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run start\" \"cross-env BROWSER=none npm run react-start\"",
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test",
+    "react-eject": "react-scripts eject",
+    "convert-icon": "node scripts/convert-icon.js",
+    "clean": "rimraf build dist",
+    "copy-electron-unix": "cp main.js public/electron.js",
+    "copy-electron-win": "copy main.js public\\electron.js",
+    "copy-electron": "node -e \"require('fs').copyFileSync('main.js', 'public/electron.js')\"",
+    "build": "npm run clean && npm run copy-electron && react-scripts build && electron-builder",
+    "dist": "npm run build"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "electron-store": "^8.1.0",
+    "framer-motion": "^10.18.0",
+    "png-to-ico": "^2.1.8",
+    "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
+    "react-router-dom": "^6.21.3",
+    "react-scripts": "5.0.1",
+    "react-spring": "^9.7.3",
+    "sharp": "^0.32.6",
+    "styled-components": "^6.1.8"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^28.1.4",
+    "electron-builder": "^24.9.1",
+    "rimraf": "^6.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": "./",
+  "build": {
+    "appId": "com.appalyzer.app",
+    "productName": "Appalyzer",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/icon.ico",
+      "signingHashAlgorithms": null,
+      "signAndEditExecutable": false
+    },
+    "asar": true,
+    "asarUnpack": [
+      "build/**/*"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "files": [
+      "build/**/*",
+      "public/electron.js",
+      "preload.js",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "build",
+        "to": "."
+      }
+    ],
+    "extraMetadata": {
+      "main": "./public/electron.js"
+    }
+  }
+}
